@@ -4,12 +4,13 @@ const User = require("../models/user");
 
 async function register(req, res, next) {
   const user = await User.create({ ...req.body });
-
+  const token = user.createJwt();
   return res.status(StatusCodes.CREATED).json({
     success: true,
     data: {
       msg: "you are registered",
       user: { name: user.name, email: user.email },
+      token,
     },
   });
 }

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use("/api/v1/jobs", jobsRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use(routeNotFound);
-app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware);
 // !SECTION
 
 module.exports = app;
