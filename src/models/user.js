@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema({
   name: {
@@ -22,5 +23,13 @@ const userSchema = mongoose.Schema({
     unique: true,
   },
 });
+
+// SECTION: this code get normal string password from user and encrypt it and returns hashed password
+userSchema.pre("save", async function () {
+  // NOTE: higher genSalt number means password is more secure but it's take more process
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+// !SECTION
 
 module.exports = mongoose.model("User", userSchema);
