@@ -15,7 +15,7 @@ async function getJob(req, res, next) {
 async function createJob(req, res, next) {
   return res
     .status(StatusCodes.OK)
-    .json({ success: true, data: { msg: "job created" } });
+    .json({ success: true, data: { msg: "job created", user: req.user } });
 }
 
 async function updateJob(req, res, next) {
