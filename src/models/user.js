@@ -6,7 +6,7 @@ const {
   checkUserPassword,
 } = require("../authentication/user");
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "please provide name"],
